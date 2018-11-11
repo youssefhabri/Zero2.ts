@@ -5,10 +5,11 @@
     "target": "esnext",
     "noImplicitAny": true,
     "moduleResolution": "node",
-    "sourceMap": true,
+    "sourceMap": false,
     "outDir": "dist",
     "baseUrl": ".",
     "paths": {
+      "@/*": ["src/*"],
       "*": ["node_modules/*", "src/types/*"]
     }
   },
