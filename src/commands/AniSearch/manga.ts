@@ -20,6 +20,7 @@ export default class ALMangaCommand extends Command {
       name: 'manga',
       enabled: true,
       usage: '<manga:string>',
+      description: 'Search for a manga in AniList.',
     });
   }
 

@@ -21,6 +21,7 @@ export default class ALUserCommand extends Command {
       name: 'user',
       enabled: true,
       usage: '<user:string>',
+      description: 'Search for a user in AniList',
     });
   }
 

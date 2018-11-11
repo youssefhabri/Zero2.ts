@@ -20,6 +20,7 @@ export default class ALAnimeCommand extends Command {
       name: 'anime',
       enabled: true,
       usage: '<anime:string>',
+      description: 'Search for an anime in AniList.',
     });
   }
 

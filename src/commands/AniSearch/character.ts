@@ -20,6 +20,7 @@ export default class ALCharacterCommand extends Command {
       name: 'character',
       enabled: true,
       usage: '<character:string>',
+      description: 'Search for a character in AniList.',
     });
   }
 
