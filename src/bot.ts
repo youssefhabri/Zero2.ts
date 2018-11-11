@@ -6,6 +6,7 @@ require('dotenv').config();
 const prefix = process.env.BOT_PREFIX || 'd!';
 
 new Client({
+  ownerID: process.env.BOT_OWNER_ID,
   fetchAllMembers: false,
   prefix: prefix,
   commandEditing: false,
