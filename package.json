@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "watch-node": "nodemon dist/bot.js",
+    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run watch-node\"",
+    "watch-ts": "tsc -w"
+  },
+  "dependencies": {
+    "@types/node": "^10.12.5",
+    "axios": "^0.18.0",
+    "discord.js": "discordjs/discord.js",
+    "dotenv": "^6.1.0",
+    "klasa": "dirigeants/klasa",
+    "node-fetch": "^2.2.1",
+    "striptags": "^3.1.1"
+  }
+}
