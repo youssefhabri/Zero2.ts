@@ -1,5 +1,6 @@
 import striptags from 'striptags';
 import fetch from 'node-fetch';
+import { isNullOrUndefined } from 'util';
 
 export const API_URL = 'https://graphql.anilist.co';
 
@@ -50,6 +51,14 @@ export function TrackingSites(media: any): string {
   return sites;
 }
 
+export function CharacterName(nameObj: any): string {
+  var name: string = (nameObj.first || '') + ' ' + (nameObj.last || '');
+  if (name.trim().length <= 0) {
+    name = nameObj.native;
+  }
+  return name;
+}
+
 export function CharacterMediaList(media: any, type: string): string {
   var list = new Array<string>();
   var count = 0;
@@ -61,5 +70,5 @@ export function CharacterMediaList(media: any, type: string): string {
     if (count >= 5) break;
   }
 
-  return list.join('\n');
+  return list.join('\n') || 'N/A';
 }

@@ -149,3 +149,36 @@ query ($id: Int, $search: String) {
   }
 }
 `;
+
+export const SEARCH_ALL_CHARACTER_QUERY: string = `
+query ($id: Int,$search: String) {
+  Page(perPage: 50) {
+    characters(id: $id, search: $search) {
+      id
+      siteUrl
+      description(asHtml: true)
+      name {
+        first
+        last
+        native
+      }
+      image {
+        large
+      }
+      media {
+        nodes {
+          id
+          type
+          siteUrl
+          title {
+            romaji
+            english
+            native
+            userPreferred
+          }
+        }
+      }
+    }
+  }
+}
+`;

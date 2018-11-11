@@ -27,11 +27,11 @@ export default class ALCharacterCommand extends Command {
 
   async run(msg: KlasaMessage, params: any[]) {
     var characterList: any[] = (await AniList.query(
-      AniList.SEARCH_CHARACTER_QUERY,
+      AniList.SEARCH_ALL_CHARACTER_QUERY,
       {
         search: params[0],
       },
-    )).Page.media;
+    )).Page.characters;
 
     return MediaRichDisplay(msg, characterList, this.buildEmbed);
   }
@@ -39,14 +39,11 @@ export default class ALCharacterCommand extends Command {
   buildEmbed(character: any): MessageEmbed {
     var msgEmbed: MessageEmbed = {
       color: 3447003,
-      title: character.title.userPreferred,
+      title: AniList.CharacterName(character.name),
       url: character.siteUrl,
       description: AniList.Synopsis(character.description, 300),
-      image: {
-        url: character.bannerImage,
-      },
       thumbnail: {
-        url: character.coverImage.large,
+        url: character.image.large,
       },
       footer: {
         text: 'Powered by AniList',
