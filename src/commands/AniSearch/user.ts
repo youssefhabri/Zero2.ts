@@ -5,8 +5,7 @@ import {
   CommandOptions,
   KlasaMessage,
 } from 'klasa';
-import { MessageEmbed } from 'discord.js';
-import * as AniList from '@/utils/anilist';
+import * as AniList from '../../utils/anilist';
 
 export default class ALUserCommand extends Command {
   msgColor = 3447003;

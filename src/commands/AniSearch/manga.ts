@@ -5,9 +5,8 @@ import {
   CommandOptions,
   KlasaMessage,
 } from 'klasa';
-import { MessageEmbed } from 'discord.js';
-import * as AniList from '@/utils/anilist';
-import { MediaRichDisplay } from '@/utils/RichDisplay';
+import * as AniList from '../../utils/anilist';
+import { MediaRichDisplay } from '../../utils/RichDisplay';
 
 export default class ALMangaCommand extends Command {
   constructor(
