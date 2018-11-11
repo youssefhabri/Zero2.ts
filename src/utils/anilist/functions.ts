@@ -50,7 +50,7 @@ export function TrackingSites(media: any): string {
   return sites;
 }
 
-export function FormatTime(time: int): string {
+export function FormatTime(time: number): string {
   const minutes = Math.floor(time % 60);
   const hours = Math.floor((time / 60) % 24);
   const days = Math.floor(time / 60 / 24);

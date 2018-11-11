@@ -24,6 +24,7 @@ export default class ALMangaCommand extends Command {
     });
   }
 
+  // @ts-ignore
   async run(msg: KlasaMessage, params: any[]) {
     var mangaList: any[] = (await AniList.query(
       AniList.SEARCH_ALL_MEDIA_QUERY,
@@ -36,8 +37,8 @@ export default class ALMangaCommand extends Command {
     return MediaRichDisplay(msg, mangaList, this.buildEmbed);
   }
 
-  buildEmbed(manga: any): MessageEmbed {
-    var msgEmbed: MessageEmbed = {
+  buildEmbed(manga: any): any {
+    var msgEmbed: any = {
       color: 3447003,
       title: manga.title.userPreferred,
       url: manga.siteUrl,

@@ -24,6 +24,7 @@ export default class ALAnimeCommand extends Command {
     });
   }
 
+  // @ts-ignore
   async run(msg: KlasaMessage, params: any[]) {
     var animeList: any[] = (await AniList.query(
       AniList.SEARCH_ALL_MEDIA_QUERY,
@@ -36,8 +37,8 @@ export default class ALAnimeCommand extends Command {
     return MediaRichDisplay(msg, animeList, this.buildEmbed);
   }
 
-  buildEmbed(anime: any): MessageEmbed {
-    var msgEmbed: MessageEmbed = {
+  buildEmbed(anime: any): any {
+    var msgEmbed: any = {
       color: 3447003,
       title: anime.title.userPreferred,
       url: anime.siteUrl,

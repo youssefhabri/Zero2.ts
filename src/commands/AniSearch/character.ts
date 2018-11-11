@@ -24,6 +24,7 @@ export default class ALCharacterCommand extends Command {
     });
   }
 
+  // @ts-ignore
   async run(msg: KlasaMessage, params: any[]) {
     var characterList: any[] = (await AniList.query(
       AniList.SEARCH_ALL_CHARACTER_QUERY,
@@ -35,8 +36,8 @@ export default class ALCharacterCommand extends Command {
     return MediaRichDisplay(msg, characterList, this.buildEmbed);
   }
 
-  buildEmbed(character: any): MessageEmbed {
-    var msgEmbed: MessageEmbed = {
+  buildEmbed(character: any): any {
+    var msgEmbed: any = {
       color: 3447003,
       title: AniList.CharacterName(character.name),
       url: character.siteUrl,

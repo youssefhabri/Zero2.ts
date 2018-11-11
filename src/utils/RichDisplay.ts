@@ -22,8 +22,8 @@ export async function MediaRichDisplay(
   for (const media of media_list) {
     display.addPage(new MessageEmbed(embedBuilder(media)));
   }
-
-  var loadingMsg = await msg.send('Loading ...');
+  // @ts-ignore
+  var loadingMsg: KlasaMessage = await msg.send('Loading ...');
   return display.run(loadingMsg, {
     filter: (_: any, user: any) => user === msg.author,
     firstLast: false,

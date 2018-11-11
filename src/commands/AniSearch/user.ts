@@ -25,21 +25,16 @@ export default class ALUserCommand extends Command {
     });
   }
 
-  run(msg: KlasaMessage, params: any[]) {
-    var options = {
-      query: AniList.SEARCH_USER_QUERY,
-      variables: {
-        search: params[0],
-      },
-    };
-    axios.post(AniList.API_URL, options).then((result) => {
-      var user = result.data.data.User;
-      return msg.sendEmbed(this.buildEmbed(user));
-    });
+  async run(msg: KlasaMessage, params: any[]) {
+    var user = (await AniList.query(AniList.SEARCH_USER_QUERY, {
+      search: params[0],
+    })).User;
+
+    return msg.sendEmbed(this.buildEmbed(user));
   }
 
-  buildEmbed(user: any): MessageEmbed {
-    var msgEmbed: MessageEmbed = {
+  buildEmbed(user: any): any {
+    var msgEmbed: any = {
       color: this.msgColor,
       title: user.name,
       url: user.siteUrl,
