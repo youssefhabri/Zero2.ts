@@ -5,10 +5,9 @@ import {
   CommandOptions,
   KlasaMessage,
 } from 'klasa';
-import * as AniList from '../../utils/anilist';
-import axios from 'axios';
 import { MessageEmbed } from 'discord.js';
-import { MediaRichDisplay } from '../../utils/RichDisplay';
+import * as AniList from '@/utils/anilist';
+import { MediaRichDisplay } from '@/utils/RichDisplay';
 
 export default class ALAnimeCommand extends Command {
   constructor(

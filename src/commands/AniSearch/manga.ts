@@ -5,14 +5,11 @@ import {
   CommandOptions,
   KlasaMessage,
 } from 'klasa';
-import * as AniList from '../../utils/anilist';
-import axios from 'axios';
 import { MessageEmbed } from 'discord.js';
-import { MediaRichDisplay } from '../../utils/RichDisplay';
+import * as AniList from '@/utils/anilist';
+import { MediaRichDisplay } from '@/utils/RichDisplay';
 
 export default class ALMangaCommand extends Command {
-  msgColor = 3447003;
-
   constructor(
     client: KlasaClient,
     store: CommandStore,
@@ -41,7 +38,7 @@ export default class ALMangaCommand extends Command {
 
   buildEmbed(manga: any): MessageEmbed {
     var msgEmbed: MessageEmbed = {
-      color: this.msgColor,
+      color: 3447003,
       title: manga.title.userPreferred,
       url: manga.siteUrl,
       description: AniList.Synopsis(manga.description),

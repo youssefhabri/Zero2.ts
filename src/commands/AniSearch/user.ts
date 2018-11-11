@@ -5,9 +5,8 @@ import {
   CommandOptions,
   KlasaMessage,
 } from 'klasa';
-import * as AniList from '../../utils/anilist';
-import axios from 'axios';
 import { MessageEmbed } from 'discord.js';
+import * as AniList from '@/utils/anilist';
 
 export default class ALUserCommand extends Command {
   msgColor = 3447003;
@@ -45,9 +44,9 @@ export default class ALUserCommand extends Command {
       title: user.name,
       url: user.siteUrl,
       description: AniList.Synopsis(user.about, 300),
-      image: {
-        url: user.bannerImage,
-      },
+      // image: {
+      //   url: user.bannerImage,
+      // },
       thumbnail: {
         url: user.avatar.large,
       },
@@ -57,7 +56,7 @@ export default class ALUserCommand extends Command {
       fields: [
         {
           name: 'Watched time',
-          value: user.stats.watchedTime || 'N/A',
+          value: AniList.FormatTime(user.stats.watchedTime) || 'N/A',
           inline: true,
         },
         {
@@ -65,9 +64,21 @@ export default class ALUserCommand extends Command {
           value: user.stats.chaptersRead || 'N/A',
           inline: true,
         },
-        //{ name: 'Favourite Anime', value: user.episodes || 'N/A', inline: true },
-        //{ name: 'Favourite Manga', value: user.episodes || 'N/A', inline: true },
-        //{ name: 'Favourite Characters', value: user.episodes || 'N/A', inline: true },
+        {
+          name: 'Favourite Anime',
+          value: AniList.UserFavourites(user, 'ANIME'),
+          inline: true,
+        },
+        {
+          name: 'Favourite Manga',
+          value: AniList.UserFavourites(user, 'MANGA'),
+          inline: true,
+        },
+        {
+          name: 'Favourite Characters',
+          value: AniList.UserFavouritesCharacters(user) || 'N/A',
+          inline: true,
+        },
       ],
     };
     return msgEmbed;

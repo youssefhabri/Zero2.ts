@@ -1,6 +1,5 @@
 import striptags from 'striptags';
 import fetch from 'node-fetch';
-import { isNullOrUndefined } from 'util';
 
 export const API_URL = 'https://graphql.anilist.co';
 
@@ -49,6 +48,50 @@ export function TrackingSites(media: any): string {
   var sites = `[AniList](https://anilist.co/anime/${media.id})`;
   sites += `, [MAL](https://myanimelist.com/anime/${media.idMal})`;
   return sites;
+}
+
+export function FormatTime(time: int): string {
+  const minutes = Math.floor(time % 60);
+  const hours = Math.floor((time / 60) % 24);
+  const days = Math.floor(time / 60 / 24);
+  return `${days} days, ${hours}:${minutes}`;
+}
+
+export function UserFavourites(user: any, type: string): string {
+  var list = new Array<string>();
+
+  var mediaList: any[] =
+    type === 'ANIME'
+      ? user.favourites.anime.nodes
+      : user.favourites.manga.nodes;
+
+  for (var i = 0; i < Math.min(mediaList.length, 5); i++) {
+    var media = mediaList[i];
+    list.push(`[${media.title.userPreferred}](${media.siteUrl})`);
+  }
+  if (mediaList.length > 5) {
+    return list.join('\n') + `\n + ${mediaList.length - 5} more`;
+  }
+
+  return list.join('\n') || 'N/A';
+}
+
+export function UserFavouritesCharacters(user: any): string {
+  var list = new Array<string>();
+
+  var characterList: any[] = user.favourites.characters.nodes;
+
+  for (var i = 0; i < Math.min(characterList.length, 5); i++) {
+    var character = characterList[i];
+    list.push(
+      `[${character.name.first} ${character.name.last}](${character.siteUrl})`,
+    );
+  }
+  if (characterList.length > 5) {
+    return list.join('\n') + `\n + ${characterList.length - 5} more`;
+  }
+
+  return list.join('\n') || 'N/A';
 }
 
 export function CharacterName(nameObj: any): string {

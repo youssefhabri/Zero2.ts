@@ -16,6 +16,8 @@ export async function MediaRichDisplay(
     info: 'ℹ',
     stop: '🇽',
   });
+  display.setFooterPrefix('Page: ');
+  display.setFooterSuffix(' | Powered by AniList');
 
   for (const media of media_list) {
     display.addPage(new MessageEmbed(embedBuilder(media)));
