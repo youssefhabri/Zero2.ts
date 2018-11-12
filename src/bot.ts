@@ -1,6 +1,6 @@
 import { Client } from 'klasa';
 
-// Loading envirement varianles from .env file
+// Loading environment variables from .env file
 require('dotenv').config();
 
 const prefix = process.env.BOT_PREFIX || 'd!';

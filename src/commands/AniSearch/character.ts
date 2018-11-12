@@ -1,12 +1,6 @@
-import {
-  Command,
-  KlasaClient,
-  CommandStore,
-  CommandOptions,
-  KlasaMessage,
-} from 'klasa';
-import * as AniList from '../../utils/anilist';
+import { Command, CommandOptions, CommandStore, KlasaClient, KlasaMessage } from 'klasa';
 import { MediaRichDisplay } from '../../utils/RichDisplay';
+import * as AniList from '../../utils/anilist';
 
 export default class ALCharacterCommand extends Command {
   constructor(
@@ -26,7 +20,7 @@ export default class ALCharacterCommand extends Command {
 
   // @ts-ignore
   async run(msg: KlasaMessage, params: any[]) {
-    var characterList: any[] = (await AniList.query(
+    const characterList: any[] = (await AniList.query(
       AniList.SEARCH_ALL_CHARACTER_QUERY,
       {
         search: params[0],
@@ -37,7 +31,7 @@ export default class ALCharacterCommand extends Command {
   }
 
   buildEmbed(character: any): any {
-    var msgEmbed: any = {
+    return {
       color: 3447003,
       title: AniList.CharacterName(character.name),
       url: character.siteUrl,
@@ -61,6 +55,5 @@ export default class ALCharacterCommand extends Command {
         },
       ],
     };
-    return msgEmbed;
   }
 }

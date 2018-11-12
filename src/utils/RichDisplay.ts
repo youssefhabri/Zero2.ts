@@ -2,7 +2,7 @@ import { RichDisplay, KlasaMessage } from 'klasa';
 import { MessageEmbed } from 'discord.js';
 
 export async function MediaRichDisplay(
-  msg: KlasaMessage,
+  message: KlasaMessage,
   media_list: any[],
   embedBuilder: Function,
   suffix: string = 'Powered by AniList'
@@ -24,9 +24,9 @@ export async function MediaRichDisplay(
     display.addPage(new MessageEmbed(embedBuilder(media)));
   }
   // @ts-ignore
-  var loadingMsg: KlasaMessage = await msg.send('Loading ...');
+  var loadingMsg: KlasaMessage = await message.send('Loading ...');
   return display.run(loadingMsg, {
-    filter: (_: any, user: any) => user === msg.author,
+    filter: (_: any, user: any) => (user === message.author) || (user === this.client.owner),
     firstLast: false,
     jump: false,
   });

@@ -20,7 +20,7 @@ export default class ALUserCommand extends Command {
   }
 
   async run(msg: KlasaMessage, params: any[]) {
-    let user = (await AniList.query(AniList.SEARCH_USER_QUERY, {
+    const user = (await AniList.query(AniList.SEARCH_USER_QUERY, {
       search: params[0],
     })).User;
 

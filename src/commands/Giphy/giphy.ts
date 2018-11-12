@@ -14,21 +14,21 @@ export default class extends Command {
       name: 'gif',
       enabled: true,
       usage: '<gif:string>',
-      description: 'Search for g GIF in Giphy',
+      description: 'Search for a GIF in Giphy',
     });
   }
 
   // @ts-ignore
   async run(message: KlasaMessage, params: any[]) {
-    let gifs_list = await this.request(params[0]);
+    const gifs_list = await this.request(params[0]);
 
     return MediaRichDisplay(message, gifs_list, this.buildEmbed, 'Powered by Giphy');
   }
 
   async request(query: string) {
-    const token = process.env.GIPHY_TOKEN;
-    let res = await fetch(
-      `http://api.giphy.com/v1/gifs/search?q=${query}&api_key=${token}&fmt=json`,
+    const api_key = process.env.GIPHY_API_KEY;
+    const res = await fetch(
+      `http://api.giphy.com/v1/gifs/search?q=${query}&api_key=${api_key}&fmt=json`,
       {
         method: 'get',
         headers: { 'Content-Type': 'application/json' },

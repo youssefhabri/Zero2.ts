@@ -1,12 +1,6 @@
-import {
-  Command,
-  KlasaClient,
-  CommandStore,
-  CommandOptions,
-  KlasaMessage,
-} from 'klasa';
-import * as AniList from '../../utils/anilist';
+import { Command, CommandOptions, CommandStore, KlasaClient, KlasaMessage } from 'klasa';
 import { MediaRichDisplay } from '../../utils/RichDisplay';
+import * as AniList from '../../utils/anilist';
 
 export default class ALMangaCommand extends Command {
   constructor(
@@ -26,7 +20,7 @@ export default class ALMangaCommand extends Command {
 
   // @ts-ignore
   async run(msg: KlasaMessage, params: any[]) {
-    var mangaList: any[] = (await AniList.query(
+    const mangaList: any[] = (await AniList.query(
       AniList.SEARCH_ALL_MEDIA_QUERY,
       {
         search: params[0],
@@ -38,7 +32,7 @@ export default class ALMangaCommand extends Command {
   }
 
   buildEmbed(manga: any): any {
-    var msgEmbed: any = {
+    return {
       color: 3447003,
       title: manga.title.userPreferred,
       url: manga.siteUrl,
@@ -62,6 +56,5 @@ export default class ALMangaCommand extends Command {
         },
       ],
     };
-    return msgEmbed;
   }
 }
