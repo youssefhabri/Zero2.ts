@@ -19,7 +19,7 @@ export default class ALCharacterCommand extends Command {
   }
 
   // @ts-ignore
-  async run(msg: KlasaMessage, params: any[]) {
+  async run(message: KlasaMessage, params: any[]) {
     const characterList: any[] = (await AniList.query(
       AniList.SEARCH_ALL_CHARACTER_QUERY,
       {
@@ -27,7 +27,7 @@ export default class ALCharacterCommand extends Command {
       },
     )).Page.characters;
 
-    return MediaRichDisplay(msg, characterList, this.buildEmbed);
+    return MediaRichDisplay(this, message, characterList, this.buildEmbed);
   }
 
   buildEmbed(character: any): any {

@@ -1,11 +1,11 @@
-import { Client } from 'klasa';
+import { KlasaClient } from 'klasa';
 
 // Loading environment variables from .env file
 require('dotenv').config();
 
 const prefix = process.env.BOT_PREFIX || 'd!';
 
-new Client({
+new KlasaClient({
   ownerID: process.env.BOT_OWNER_ID,
   fetchAllMembers: false,
   prefix: prefix,

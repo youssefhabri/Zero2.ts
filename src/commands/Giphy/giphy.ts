@@ -22,7 +22,7 @@ export default class extends Command {
   async run(message: KlasaMessage, params: any[]) {
     const gifs_list = await this.request(params[0]);
 
-    return MediaRichDisplay(message, gifs_list, this.buildEmbed, 'Powered by Giphy');
+    return MediaRichDisplay(this, message, gifs_list, this.buildEmbed, 'Powered by Giphy');
   }
 
   async request(query: string) {

@@ -1,7 +1,8 @@
-import { RichDisplay, KlasaMessage } from 'klasa';
+import { RichDisplay, KlasaMessage, Command } from 'klasa';
 import { MessageEmbed } from 'discord.js';
 
 export async function MediaRichDisplay(
+  command: Command,
   message: KlasaMessage,
   media_list: any[],
   embedBuilder: Function,
@@ -25,8 +26,9 @@ export async function MediaRichDisplay(
   }
   // @ts-ignore
   var loadingMsg: KlasaMessage = await message.send('Loading ...');
+  console.log(command.client.owner);
   return display.run(loadingMsg, {
-    filter: (_: any, user: any) => (user === message.author),
+    filter: (_: any, user: any) => (user === message.author) || (user === command.client.owner),
     firstLast: false,
     jump: false,
   });

@@ -19,7 +19,7 @@ export default class ALAnimeCommand extends Command {
   }
 
   // @ts-ignore
-  async run(msg: KlasaMessage, params: any[]) {
+  async run(message: KlasaMessage, params: any[]) {
     const animeList: any[] = (await AniList.query(
       AniList.SEARCH_ALL_MEDIA_QUERY,
       {
@@ -28,7 +28,7 @@ export default class ALAnimeCommand extends Command {
       },
     )).Page.media;
 
-    return MediaRichDisplay(msg, animeList, this.buildEmbed);
+    return MediaRichDisplay(this, message, animeList, this.buildEmbed);
   }
 
   buildEmbed(anime: any): any {

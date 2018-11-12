@@ -19,7 +19,7 @@ export default class ALMangaCommand extends Command {
   }
 
   // @ts-ignore
-  async run(msg: KlasaMessage, params: any[]) {
+  async run(message: KlasaMessage, params: any[]) {
     const mangaList: any[] = (await AniList.query(
       AniList.SEARCH_ALL_MEDIA_QUERY,
       {
@@ -28,7 +28,7 @@ export default class ALMangaCommand extends Command {
       },
     )).Page.media;
 
-    return MediaRichDisplay(msg, mangaList, this.buildEmbed);
+    return MediaRichDisplay(this, message, mangaList, this.buildEmbed);
   }
 
   buildEmbed(manga: any): any {
