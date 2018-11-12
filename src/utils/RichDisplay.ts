@@ -26,7 +26,7 @@ export async function MediaRichDisplay(
   // @ts-ignore
   var loadingMsg: KlasaMessage = await message.send('Loading ...');
   return display.run(loadingMsg, {
-    filter: (_: any, user: any) => (user === message.author) || (user === this.client.owner),
+    filter: (_: any, user: any) => (user === message.author),
     firstLast: false,
     jump: false,
   });
