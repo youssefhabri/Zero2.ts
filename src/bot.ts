@@ -10,6 +10,7 @@ new Client({
   fetchAllMembers: false,
   prefix: prefix,
   commandEditing: false,
+  disabledCorePieces: [],
   typing: true,
   readyMessage: (client) =>
     `Successfully initialized. Ready to serve ${

@@ -5,8 +5,9 @@ export async function MediaRichDisplay(
   msg: KlasaMessage,
   media_list: any[],
   embedBuilder: Function,
+  suffix: string = 'Powered by AniList'
 ) {
-  var display = new RichDisplay(new MessageEmbed().setTitle('Search Results'));
+  let display = new RichDisplay(new MessageEmbed().setTitle('Search Results'));
   display.setEmojis({
     first: '⏮',
     back: '⬅',
@@ -17,7 +18,7 @@ export async function MediaRichDisplay(
     stop: '🇽',
   });
   display.setFooterPrefix('Page: ');
-  display.setFooterSuffix(' | Powered by AniList');
+  display.setFooterSuffix(' | ' + suffix);
 
   for (const media of media_list) {
     display.addPage(new MessageEmbed(embedBuilder(media)));

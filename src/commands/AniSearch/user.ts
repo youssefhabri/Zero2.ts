@@ -1,10 +1,4 @@
-import {
-  Command,
-  KlasaClient,
-  CommandStore,
-  CommandOptions,
-  KlasaMessage,
-} from 'klasa';
+import { Command, CommandOptions, CommandStore, KlasaClient, KlasaMessage } from 'klasa';
 import * as AniList from '../../utils/anilist';
 
 export default class ALUserCommand extends Command {
@@ -26,7 +20,7 @@ export default class ALUserCommand extends Command {
   }
 
   async run(msg: KlasaMessage, params: any[]) {
-    var user = (await AniList.query(AniList.SEARCH_USER_QUERY, {
+    let user = (await AniList.query(AniList.SEARCH_USER_QUERY, {
       search: params[0],
     })).User;
 
@@ -34,7 +28,7 @@ export default class ALUserCommand extends Command {
   }
 
   buildEmbed(user: any): any {
-    var msgEmbed: any = {
+    return {
       color: this.msgColor,
       title: user.name,
       url: user.siteUrl,
@@ -76,6 +70,5 @@ export default class ALUserCommand extends Command {
         },
       ],
     };
-    return msgEmbed;
   }
 }
