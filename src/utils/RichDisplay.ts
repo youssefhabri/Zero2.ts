@@ -8,7 +8,7 @@ export async function MediaRichDisplay(
   embedBuilder: Function,
   suffix: string = 'Powered by AniList'
 ) {
-  let display = new RichDisplay(new MessageEmbed().setTitle('Search Results'));
+  const display = new RichDisplay(new MessageEmbed().setTitle('Search Results'));
   display.setEmojis({
     first: '⏮',
     back: '⬅',
