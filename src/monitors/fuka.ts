@@ -5,7 +5,7 @@ export default class FukaBotMonitor extends Monitor {
   private responses: string[] = [
     `<@${this.fukaID}>, Is that all you can do. Pff!`,
     `Oh, wow. <@${this.fukaID}>, you're actually trying!`,
-    `Ehm, I too can add numbers. But, I don't wanna take <@${this.fukaID}>'s only job. You should be grateful`
+    `Ehm, I too can add numbers. But, I don't wanna take <@${this.fukaID}>'s only job. You should be grateful.`
   ];
 
   constructor(...args) {
@@ -22,10 +22,20 @@ export default class FukaBotMonitor extends Monitor {
       ignoreBlacklistedGuilds: true
     });
   }
-  run(message: KlasaMessage) {
+
+  async run(message: KlasaMessage) {
     const n = Math.floor(Math.random() * this.responses.length);
     if (message.author.id === this.fukaID) {
+
+      message.channel.startTyping();
+      await this.delay(1500);
+      message.channel.stopTyping();
+
       return message.send(this.responses[n]);
     }
+  }
+
+  async delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
   }
 }
