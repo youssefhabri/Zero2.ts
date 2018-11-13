@@ -1,6 +1,5 @@
 import { Command, CommandOptions, CommandStore, KlasaClient, KlasaMessage } from 'klasa';
 import * as AniList from '../../utils/anilist';
-import { MediaRichDisplay } from '../../utils/RichDisplay';
 
 export default class ALUserCommand extends Command {
   msgColor = 3447003;
