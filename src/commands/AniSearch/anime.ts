@@ -28,7 +28,10 @@ export default class ALAnimeCommand extends Command {
       },
     )).Page.media;
 
-    return MediaRichDisplay(this, message, animeList, this.buildEmbed);
+    if (animeList.length > 0) {
+      return MediaRichDisplay(this, message, animeList, this.buildEmbed);
+    }
+    return message.send(`No results were found for \`${params[0]}\`!`);
   }
 
   buildEmbed(anime: any): any {

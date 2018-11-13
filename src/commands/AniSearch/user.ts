@@ -1,5 +1,6 @@
 import { Command, CommandOptions, CommandStore, KlasaClient, KlasaMessage } from 'klasa';
 import * as AniList from '../../utils/anilist';
+import { MediaRichDisplay } from '../../utils/RichDisplay';
 
 export default class ALUserCommand extends Command {
   msgColor = 3447003;
@@ -19,12 +20,15 @@ export default class ALUserCommand extends Command {
     });
   }
 
-  async run(msg: KlasaMessage, params: any[]) {
+  async run(message: KlasaMessage, params: any[]) {
     const user = (await AniList.query(AniList.SEARCH_USER_QUERY, {
       search: params[0],
     })).User;
 
-    return msg.sendEmbed(this.buildEmbed(user));
+    if (user !== undefined && user !== null) {
+      return message.sendEmbed(this.buildEmbed(user));
+    }
+    return message.send(`No results were found for \`${params[0]}\`!`);
   }
 
   buildEmbed(user: any): any {

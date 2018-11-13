@@ -24,11 +24,14 @@ export default class ALMangaCommand extends Command {
       AniList.SEARCH_ALL_MEDIA_QUERY,
       {
         search: params[0],
-        type: 'ANIME',
+        type: 'MANGA',
       },
     )).Page.media;
 
-    return MediaRichDisplay(this, message, mangaList, this.buildEmbed);
+    if (mangaList.length > 0) {
+      return MediaRichDisplay(this, message, mangaList, this.buildEmbed);
+    }
+    return message.send(`No results were found for \`${params[0]}\`!`);
   }
 
   buildEmbed(manga: any): any {

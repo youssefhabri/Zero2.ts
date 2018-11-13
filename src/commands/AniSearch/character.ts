@@ -27,7 +27,10 @@ export default class ALCharacterCommand extends Command {
       },
     )).Page.characters;
 
-    return MediaRichDisplay(this, message, characterList, this.buildEmbed);
+    if (characterList.length > 0) {
+      return MediaRichDisplay(this, message, characterList, this.buildEmbed);
+    }
+    return message.send(`No results were found for \`${params[0]}\`!`);
   }
 
   buildEmbed(character: any): any {

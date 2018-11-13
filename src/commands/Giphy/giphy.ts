@@ -20,9 +20,12 @@ export default class extends Command {
 
   // @ts-ignore
   async run(message: KlasaMessage, params: any[]) {
-    const gifs_list = await this.request(params[0]);
+    const gifs_list: any[] = await this.request(params[0]);
 
-    return MediaRichDisplay(this, message, gifs_list, this.buildEmbed, 'Powered by Giphy');
+    if (gifs_list.length > 0) {
+      return MediaRichDisplay(this, message, gifs_list, this.buildEmbed, 'Powered by Giphy');
+    }
+    return message.send(`No results were found for \`${params[0]}\`!`);
   }
 
   async request(query: string) {
