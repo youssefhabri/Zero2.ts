@@ -15,7 +15,7 @@ export default class FukaBotMonitor extends Monitor {
       enabled: true,
       ignoreBots: false,
       ignoreSelf: true,
-      ignoreOthers: true,
+      ignoreOthers: false,
       ignoreWebhooks: true,
       ignoreEdits: true,
       ignoreBlacklistedUsers: true,
