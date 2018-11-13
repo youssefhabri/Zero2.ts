@@ -1,5 +1,4 @@
-import { Command, CommandOptions, CommandStore, KlasaClient, KlasaMessage } from 'klasa';
-import { isArray } from 'util';
+import { Command, KlasaMessage } from 'klasa';
 
 export default class AddCommand extends Command {
   constructor(...args) {
