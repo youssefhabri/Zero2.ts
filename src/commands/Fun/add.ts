@@ -5,9 +5,9 @@ export default class AddCommand extends Command {
     // @ts-ignore
     super(...args, {
       name: 'add',
-      description: 'Try you luck at adding two numbers. Who knows, Zero Two might actually pity you, and help you.',
+      description: 'Try your luck at adding two numbers. Who knows, Zero Two might actually pity you, and help you.',
       usage: '<numbers:int> [...]',
-      usageDelim: ' '
+      usageDelim: ' ',
     });
   }
 
