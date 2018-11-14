@@ -9,6 +9,7 @@ export default class DuelCommand extends Command {
       name: 'duel',
       enabled: true,
       usage: '<user:user>',
+      description: 'Have a "100% fair" duel with another member.',
     });
   }
 
