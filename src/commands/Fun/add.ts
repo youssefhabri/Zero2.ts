@@ -13,7 +13,7 @@ export default class AddCommand extends Command {
 
   run(message: KlasaMessage, numbers) {
     if (numbers.length >= 2) {
-      const response = this.response(numbers);
+      const response: any = this.response(numbers);
       if (response instanceof Array) {
         for (let i = 0; i < response.length - 1; i++) {
           message.send(response[i]);
@@ -30,7 +30,7 @@ export default class AddCommand extends Command {
     const responsesList = [
       'You can\'t event added two number yourself? Pathetic. Maybe you should get <@510000124949168165> to do it for you. _Hmph_ ...',
       `What? <@510000124949168165> couldn\'t do that for you? And now you want me to do it? ...\nAlright, I\'ll help you this time. **${numbers[0]}** + **${numbers[0]}** is **${parseInt(numbers[0]) + parseInt(numbers[0])}**`,
-      ['Hey, <@510000124949168165>! This is your job, right?', `!add ${numbers[0]} ${numbers[1]}`]
+      // ['Hey, <@510000124949168165>! This is your job, right?', `!add ${numbers[0]} ${numbers[1]}`]
     ];
 
     const n = Math.floor(Math.random() * responsesList.length);

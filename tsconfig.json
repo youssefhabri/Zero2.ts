@@ -5,6 +5,7 @@
     "target": "esnext",
     "noImplicitAny": false,
     "moduleResolution": "node",
+    "resolveJsonModule": true,
     "sourceMap": false,
     "outDir": "dist",
     "baseUrl": ".",

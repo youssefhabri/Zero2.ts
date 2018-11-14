@@ -12,8 +12,9 @@ new KlasaClient({
   commandEditing: false,
   disabledCorePieces: [],
   typing: true,
+  providers: {},
   readyMessage: (client) =>
     `Successfully initialized. Ready to serve ${
       client.guilds.size
-    } guilds. Prefix: ${prefix}`,
+      } guilds. Prefix: ${prefix}`,
 }).login(process.env.BOT_TOKEN);

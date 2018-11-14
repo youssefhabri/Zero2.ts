@@ -3,9 +3,10 @@ import { Command, CommandOptions, CommandStore, KlasaClient, KlasaMessage } from
 export default class TestCommand extends Command {
   constructor(client: KlasaClient, store: CommandStore, file: string[], directory: string, options: CommandOptions) {
     super(client, store, file, directory, {
+      enabled: false,
       name: 'test',
       usage: '',
-      usageDelim: ' '
+      usageDelim: ' ',
     });
   }
 
