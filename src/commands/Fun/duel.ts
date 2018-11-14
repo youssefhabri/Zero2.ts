@@ -6,26 +6,30 @@ export default class DuelCommand extends Command {
   constructor(...args) {
     // @ts-ignore
     super(...args, {
-      name: 'duel',
+      name: 'fight',
+      aliases: ['duel'],
+      runIn: ['text'],
       enabled: true,
-      usage: '<user:user>',
-      description: 'Have a "100% fair" duel with another member.',
+      usage: '<user:user> [...]',
+      usageDelim: ' ',
+      description: 'Have a "100% fair" fight with other members of the server.',
     });
   }
 
   run(message: KlasaMessage, users: KlasaUser[]) {
-    const user = users[0];
-    if (user.id === this.client.user.id) {
+    console.log(users);
+    if (users.length === 1 && users[0].id === this.client.user.id) {
       return message.send('I\'m not the fighting kind');
-    } else if (user.id === message.author.id) {
+    } else if (users.length === 1 && users[0].id === message.author.id) {
       message.send('_Stop hitting yourself!_');
       return message.sendEmbed(new MessageEmbed().setImage('https://media.giphy.com/media/bdn4mVgumSK7C/giphy.gif'));
     }
 
-    const winnerID = [user.id, message.author.id][random(0, 2)];
-
+    const players = [message.author.id, ...users.map(user => user.id)];
+    const winnerID = players[random(0, players.length)];
     const msg: string[] = [
-      `<@${message.author.id}> and <@${user.id}> dueled for ${random(2, 120)} gruesome hours!`,
+      players.filter(playerID => playerID !== message.author.id).map(playerID => `<@${playerID}>`).join(', '),
+      `and <@${message.author.id}> fought for ${random(2, 120)} gruesome hours!`,
       `It was a long, heated battle, but <@${winnerID}> came out victorious!`,
     ];
 
