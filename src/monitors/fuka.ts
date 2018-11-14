@@ -27,7 +27,7 @@ export default class FukaBotMonitor extends Monitor {
 
   async run(message: KlasaMessage) {
     const n = Math.floor(Math.random() * this.responses.length);
-    if (message.author.id === '139360031102599168' && (this.timeout <= new Date().getTime())) {
+    if (message.author.id === this.fukaID && (this.timeout <= new Date().getTime())) {
 
       // Delay the command & start typing so it looks natural
       message.channel.startTyping();
