@@ -22,7 +22,6 @@ class Zero2Bot extends KlasaClient {
           } guilds. Prefix: ${prefix}`,
     });
   }
-
 }
 
 new Zero2Bot().login(process.env.BOT_TOKEN);

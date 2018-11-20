@@ -13,7 +13,7 @@ export default class FukaBotMonitor extends Monitor {
     // @ts-ignore
     super(...args, {
       name: 'fukaMonitor',
-      enabled: true,
+      enabled: false,
       ignoreBots: false,
       ignoreSelf: true,
       ignoreOthers: false,
