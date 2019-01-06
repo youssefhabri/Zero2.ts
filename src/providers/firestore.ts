@@ -30,7 +30,8 @@ export default class extends Provider {
     return this.db.collection(table);
   }
 
-  deleteTable(table) {
+  deleteTable<T = any>(table: string): Promise<T> {
+    return undefined;
   }
 
   getKeys(table) {
