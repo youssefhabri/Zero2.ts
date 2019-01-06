@@ -30,6 +30,9 @@ export default class extends Provider {
     return this.db.collection(table);
   }
 
+  deleteTable(table) {
+  }
+
   getKeys(table) {
     return this.db.collection(table).get().then(snaps => snaps.docs.map(snap => snap.id));
   }

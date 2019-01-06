@@ -1,6 +1,6 @@
 import { KlasaClient } from 'klasa';
 
-import firebaseConfig from './firebase.json';
+// import firebaseConfig from './firebase.json';
 
 // Loading environment variables from .env file
 require('dotenv').config();
@@ -17,11 +17,11 @@ class Zero2Bot extends KlasaClient {
       disabledCorePieces: [],
       typing: true,
       providers: {
-        default: 'firestore',
-        firestore: {
-          credentials: firebaseConfig,
-          databaseURL: process.env.FIREBASE_DB_URL,
-        },
+        // default: 'firestore',
+        // firestore: {
+        //   credentials: firebaseConfig,
+        //   databaseURL: process.env.FIREBASE_DB_URL,
+        // },
       },
       readyMessage: (client) =>
         `Successfully initialized. Ready to serve ${
