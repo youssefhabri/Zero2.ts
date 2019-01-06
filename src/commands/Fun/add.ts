@@ -34,7 +34,7 @@ export default class AddCommand extends Command {
 
   responsesList = (args: any) => [
     'You can\'t event added two number yourself? Pathetic. Maybe you should get <@510000124949168165> to do it for you. _Hmph_ ...',
-    `What? <@510000124949168165> couldn\'t do that for you? And now you want me to do it? ...\nAlright, I\'ll help you this time. **${args[0]}** + **${args[0]}** is **${parseInt(numbers[0]) + parseInt(numbers[0])}**`,
+    `What? <@510000124949168165> couldn\'t do that for you? And now you want me to do it? ...\nAlright, I\'ll help you this time. **${args[0]}** + **${args[0]}** is **${parseInt(args[0]) + parseInt(args[0])}**`,
     // ['Hey, <@510000124949168165>! This is your job, right?', `!add ${args[0]} ${args[1]}`]
   ];
 }
