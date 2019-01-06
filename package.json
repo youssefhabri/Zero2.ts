@@ -8,7 +8,7 @@
     "email": "youssef.habri@gmail.com"
   },
   "engines": {
-    "node": ">=10"
+    "node": "10.x"
   },
   "repository": {
     "type": "git",
