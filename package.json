@@ -8,7 +8,7 @@
     "email": "youssef.habri@gmail.com"
   },
   "engines": {
-    "node": "11.x"
+    "node": ">=10"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,8 @@
   "dependencies": {
     "discord.js": "discordjs/discord.js",
     "dotenv": "^6.1.0",
+    "firebase-admin": "^6.2.0",
+    "grpc": "^1.16.1",
     "klasa": "dirigeants/klasa",
     "node-fetch": "^2.2.1",
     "striptags": "^3.1.1"

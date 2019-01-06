@@ -119,6 +119,64 @@ query ($id: Int, $search: String) {
 }
 `;
 
+export const SEARCH_ALL_USERS_QUERY: string = `
+query ($id: Int, $search: String) {
+  Page(perPage: 50) {
+    users(id: $id, search: $search, sort: USERNAME) {
+      id
+      name
+      siteUrl
+      avatar {
+        large
+      }
+      bannerImage
+      about(asHtml: true)
+      stats {
+        watchedTime
+        chaptersRead
+      }
+      favourites {
+        manga {
+          nodes {
+            id
+        siteUrl
+            title {
+              romaji
+              english
+              native
+              userPreferred
+            }
+          }
+        }
+        characters {
+          nodes {
+            id
+        siteUrl
+            name {
+              first
+              last
+              native
+            }
+          }
+        }
+        anime {
+          nodes {
+            id
+        siteUrl
+            title {
+              romaji
+              english
+              native
+              userPreferred
+            }
+          }
+        }
+      }
+    }
+	}
+}
+`;
+
 export const SEARCH_CHARACTER_QUERY: string = `
 query ($id: Int, $search: String) {
   Character(id: $id, search: $search) {

@@ -1,5 +1,5 @@
 import { Command, CommandOptions, CommandStore, KlasaClient, KlasaMessage } from 'klasa';
-import { MediaRichDisplay } from '../../utils/RichDisplay';
+import { ALRichDisplay } from '../../utils/RichDisplay';
 import * as AniList from '../../utils/anilist';
 
 export default class ALMangaCommand extends Command {
@@ -29,7 +29,7 @@ export default class ALMangaCommand extends Command {
     )).Page.media;
 
     if (mangaList.length > 0) {
-      return MediaRichDisplay(this, message, mangaList, this.buildEmbed);
+      return ALRichDisplay(this, message, mangaList, this.buildEmbed);
     }
     return message.send(`No results were found for \`${params[0]}\`!`);
   }

@@ -1,6 +1,6 @@
 import { Command, CommandOptions, CommandStore, KlasaClient, KlasaMessage } from 'klasa';
 import fetch from 'node-fetch';
-import { MediaRichDisplay } from '../../utils/RichDisplay';
+import { ALRichDisplay } from '../../utils/RichDisplay';
 
 export default class extends Command {
   constructor(
@@ -23,7 +23,7 @@ export default class extends Command {
     const gifs_list: any[] = await this.request(params[0]);
 
     if (gifs_list.length > 0) {
-      return MediaRichDisplay(this, message, gifs_list, this.buildEmbed, 'Powered by Giphy');
+      return ALRichDisplay(this, message, gifs_list, this.buildEmbed, 'Powered by Giphy');
     }
     return message.send(`No results were found for \`${params[0]}\`!`);
   }

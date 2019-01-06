@@ -25,12 +25,12 @@ export default class DuelCommand extends Command {
       return message.sendEmbed(new MessageEmbed().setImage('https://media.giphy.com/media/bdn4mVgumSK7C/giphy.gif'));
     }
 
-    const players = [message.author.id, ...users.map(user => user.id)];
-    const winnerID = players[random(0, players.length)];
+    const players = [message.author, ...users];
+    const winner = players[random(0, players.length)];
     const msg: string[] = [
-      players.filter(playerID => playerID !== message.author.id).map(playerID => `<@${playerID}>`).join(', '),
-      `and <@${message.author.id}> fought for ${random(2, 120)} gruesome hours!`,
-      `It was a long, heated battle, but <@${winnerID}> came out victorious!`,
+      players.filter(player => player !== message.author).join(', '),
+      `and ${message.author} fought for ${random(2, 120)} gruesome hours!`,
+      `It was a long, heated battle, but ${winner} came out victorious!`,
     ];
 
     return message.send(msg.join(' '));

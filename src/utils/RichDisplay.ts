@@ -1,14 +1,16 @@
-import { RichDisplay, KlasaMessage, Command } from 'klasa';
+import { Command, KlasaMessage, RichDisplay } from 'klasa';
 import { MessageEmbed } from 'discord.js';
 
-export async function MediaRichDisplay(
+export async function ALRichDisplay(
   command: Command,
   message: KlasaMessage,
   media_list: any[],
   embedBuilder: Function,
-  suffix: string = 'Powered by AniList'
+  suffix: string = 'Powered by AniList',
 ) {
-  const display = new RichDisplay(new MessageEmbed().setTitle('Search Results'));
+  const display = new RichDisplay(
+    new MessageEmbed().setTitle('Search Results'),
+  );
   display.setEmojis({
     first: '⏮',
     back: '⬅',
@@ -26,9 +28,9 @@ export async function MediaRichDisplay(
   }
   // @ts-ignore
   var loadingMsg: KlasaMessage = await message.send('Loading ...');
-  console.log(command.client.owner);
+
   return display.run(loadingMsg, {
-    filter: (_: any, user: any) => (user === message.author) || (user === command.client.owner),
+    filter: (_: any, user: any) => user === message.author || user === command.client.owner,
     firstLast: false,
     jump: false,
   });

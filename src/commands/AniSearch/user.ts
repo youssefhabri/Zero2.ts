@@ -1,8 +1,8 @@
 import { Command, CommandOptions, CommandStore, KlasaClient, KlasaMessage } from 'klasa';
 import * as AniList from '../../utils/anilist';
+import { ALRichDisplay } from '../../utils/RichDisplay';
 
 export default class ALUserCommand extends Command {
-  msgColor = 3447003;
 
   constructor(
     client: KlasaClient,
@@ -19,20 +19,24 @@ export default class ALUserCommand extends Command {
     });
   }
 
+  // @ts-ignore
   async run(message: KlasaMessage, params: any[]) {
-    const user = (await AniList.query(AniList.SEARCH_USER_QUERY, {
-      search: params[0],
-    })).User;
+    const userList: any[] = (await AniList.query(
+      AniList.SEARCH_ALL_USERS_QUERY,
+      {
+        search: params[0],
+      },
+    )).Page.users;
 
-    if (user !== undefined && user !== null) {
-      return message.sendEmbed(this.buildEmbed(user));
+    if (userList.length > 0) {
+      return ALRichDisplay(this, message, userList, this.buildEmbed);
     }
     return message.send(`No results were found for \`${params[0]}\`!`);
   }
 
   buildEmbed(user: any): any {
     return {
-      color: this.msgColor,
+      color: 3447003,
       title: user.name,
       url: user.siteUrl,
       description: AniList.Synopsis(user.about, 300),

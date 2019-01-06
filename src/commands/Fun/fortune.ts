@@ -20,7 +20,7 @@ export default class FortuneCommand extends Command {
     const n = random(0, fortunesList.length);
     const fortune = fortunesList[n]['message'];
 
-    const user: GuildMember = await message.guild.members.fetch(message.author.id);
+    const user: GuildMember = await message.guild.members.fetch(message.author);
 
     const msgEmbed = new MessageEmbed();
     msgEmbed.setColor(user.displayColor);
