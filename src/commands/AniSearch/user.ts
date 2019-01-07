@@ -13,6 +13,7 @@ export default class ALUserCommand extends Command {
   ) {
     super(client, store, file, directory, {
       name: 'user',
+      aliases: ['u'],
       enabled: true,
       usage: '<user:string>',
       description: 'Search for a user in AniList',

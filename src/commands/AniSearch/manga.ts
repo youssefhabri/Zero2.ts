@@ -12,6 +12,7 @@ export default class ALMangaCommand extends Command {
   ) {
     super(client, store, file, directory, {
       name: 'manga',
+      aliases: ['m'],
       enabled: true,
       usage: '<manga:string>',
       description: 'Search for a manga in AniList.',

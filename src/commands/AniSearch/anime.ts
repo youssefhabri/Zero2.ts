@@ -12,6 +12,7 @@ export default class ALAnimeCommand extends Command {
   ) {
     super(client, store, file, directory, {
       name: 'anime',
+      aliases: ['a'],
       enabled: true,
       usage: '<anime:string>',
       description: 'Search for an anime in AniList.',

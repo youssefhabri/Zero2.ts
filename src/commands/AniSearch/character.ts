@@ -12,6 +12,7 @@ export default class ALCharacterCommand extends Command {
   ) {
     super(client, store, file, directory, {
       name: 'character',
+      aliases: ['c'],
       enabled: true,
       usage: '<character:string>',
       description: 'Search for a character in AniList.',
