@@ -33,5 +33,6 @@ export async function ALRichDisplay(
     filter: (_: any, user: any) => user === message.author || user === command.client.owner,
     firstLast: false,
     jump: false,
+    time: 5 * 60 * 1000, // TODO Reset the time out after the user clicks the buttons
   });
 }
