@@ -84,7 +84,7 @@ export function UserFavouritesCharacters(user: any): string {
   for (let i = 0; i < Math.min(characterList.length, 5); i++) {
     const character = characterList[i];
     list.push(
-      `[${character.name.first} ${character.name.last}](${character.siteUrl})`,
+      `[${CharacterName(character.name)}](${character.siteUrl})`,
     );
   }
   if (characterList.length > 5) {
