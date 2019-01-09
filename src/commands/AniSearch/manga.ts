@@ -21,13 +21,7 @@ export default class ALMangaCommand extends Command {
 
   // @ts-ignore
   async run(message: KlasaMessage, params: any[]) {
-    const mangaList: any[] = (await AniList.query(
-      AniList.SEARCH_ALL_MEDIA_QUERY,
-      {
-        search: params[0],
-        type: 'MANGA',
-      },
-    )).Page.media;
+    const mangaList: any[] = await AniList.searchMedia(params[0], 'MANGA');
 
     if (mangaList.length > 0) {
       return ALRichDisplay(this, message, mangaList, this.buildEmbed);

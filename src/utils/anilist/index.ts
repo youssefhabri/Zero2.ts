@@ -1,2 +1,3 @@
 export * from './queries';
-export * from './functions';
+export * from './helpers';
+export * from './search';

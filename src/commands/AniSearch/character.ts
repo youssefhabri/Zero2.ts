@@ -21,12 +21,7 @@ export default class ALCharacterCommand extends Command {
 
   // @ts-ignore
   async run(message: KlasaMessage, params: any[]) {
-    const characterList: any[] = (await AniList.query(
-      AniList.SEARCH_ALL_CHARACTER_QUERY,
-      {
-        search: params[0],
-      },
-    )).Page.characters;
+    const characterList: any[] = await AniList.searchCharacter(params[0]);
 
     if (characterList.length > 0) {
       return ALRichDisplay(this, message, characterList, this.buildEmbed);

@@ -21,13 +21,7 @@ export default class ALAnimeCommand extends Command {
 
   // @ts-ignore
   async run(message: KlasaMessage, params: any[]) {
-    const animeList: any[] = (await AniList.query(
-      AniList.SEARCH_ALL_MEDIA_QUERY,
-      {
-        search: params[0],
-        type: 'ANIME',
-      },
-    )).Page.media;
+    const animeList: any[] = await AniList.searchMedia(params[0]);
 
     if (animeList.length > 0) {
       return ALRichDisplay(this, message, animeList, this.buildEmbed);

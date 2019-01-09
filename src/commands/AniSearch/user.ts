@@ -22,12 +22,7 @@ export default class ALUserCommand extends Command {
 
   // @ts-ignore
   async run(message: KlasaMessage, params: any[]) {
-    const userList: any[] = (await AniList.query(
-      AniList.SEARCH_ALL_USERS_QUERY,
-      {
-        search: params[0],
-      },
-    )).Page.users;
+    const userList: any[] = await AniList.searchUser(params[0]);
 
     if (userList.length > 0) {
       return ALRichDisplay(this, message, userList, this.buildEmbed);
