@@ -27,9 +27,10 @@ export default class AddCommand extends Command {
   }
 
   response(numbers) {
-    const n = Math.floor(Math.random() * this.responsesList(numbers).length);
+    const responses = this.responsesList(numbers);
+    const n = Math.floor(Math.random() * responses.length);
 
-    return this.responsesList[n];
+    return responses[n];
   }
 
   responsesList = (args: any) => [
