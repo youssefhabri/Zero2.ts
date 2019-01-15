@@ -16,10 +16,11 @@
   },
   "scripts": {
     "start": "npm run serve",
-    "serve": "node dist/bot.js",
+    "serve": "node dist/bot.js --scripts-prepend-node-path",
+    "profile": "node dist/bot.js --prof --log-timer-events",
     "watch-node": "nodemon dist/bot.js",
-    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run watch-node\"",
-    "watch-ts": "tsc -w",
+    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"tsc -w\" \"npm run watch-node\"",
+    "watch-ts": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"tsc -w\" \"npm run serve\"",
     "postinstall": "tsc"
   },
   "dependencies": {

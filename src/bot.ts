@@ -1,7 +1,5 @@
 import { KlasaClient } from 'klasa';
 
-// import firebaseConfig from './firebase.json';
-
 // Loading environment variables from .env file
 require('dotenv').config();
 
