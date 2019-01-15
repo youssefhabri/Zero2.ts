@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import { Command, KlasaClient, KlasaMessage } from 'klasa';
+import { Command, KlasaClient, KlasaMessage, KlasaUser } from 'klasa';
 import { random } from '../../utils/common';
 import { MessageEmbed } from 'discord.js';
 
@@ -11,14 +11,15 @@ const selectionList = [
   'fox_girl',
 ];
 
-export default class NLOwO extends Command {
+export default class NLImg extends Command {
   constructor(client: KlasaClient, ...args) {
     // @ts-ignore
     super(client, ...args, {
       enabled: true,
       name: 'nekolife',
       aliases: ['nl', 'nlimg'],
-      usage: '[nlimg:string]',
+      usage: '[input:string]',
+      useDelim: ' ',
       description: 'Get gifs from nekos.life.',
       extendedHelp: 'Usage: ' + client.options.prefix + 'nl ' + '[' + selectionList.join('|') + ']',
     });
@@ -27,7 +28,10 @@ export default class NLOwO extends Command {
 
   async run(message: KlasaMessage, params: any[]) {
 
-    const selection = this.selection(params[0]);
+    const args: any[] = params[0].split(' ');
+    const type: string = args.length > 0 ? args[0] : '';
+    const user: KlasaUser = args.length > 1 ? args[1] : undefined;
+    const selection = this.selection(type);
 
     return fetch(`https://nekos.life/api/v2/img/${selection}`)
       .then(async res => {
@@ -35,12 +39,23 @@ export default class NLOwO extends Command {
         let img_title = (selection[0].toUpperCase() + selection.substr(1));
         img_title = img_title.replace('_', ' ');
 
-        return message.sendEmbed(
-          new MessageEmbed()
-            .setTitle(img_title)
-            .setImage(img_url)
-            .setURL(img_url),
+        const messageEmbed = new MessageEmbed().setImage(img_url);
+
+        const messages: any[] = [];
+
+        if (user !== undefined) {
+          messages.push(message.send(`${user}: ${message.author} sent you a ${img_title}!`));
+        } else {
+          messageEmbed.setTitle(img_title).setURL(img_url);
+        }
+
+        messages.push(
+          message.sendEmbed(messageEmbed),
         );
+
+        message.delete();
+
+        return messages;
       })
       .catch(reason => {
         console.log(reason);

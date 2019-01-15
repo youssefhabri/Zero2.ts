@@ -7,7 +7,7 @@ export default class Cleanup extends Command {
     super(...args, {
       name: 'cleanup',
       runIn: ['text'],
-      permissionLevel: 10,
+      permissionLevel: 6,
       usage: '[messages:number]',
     });
   }
