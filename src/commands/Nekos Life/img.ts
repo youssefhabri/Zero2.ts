@@ -27,8 +27,8 @@ export default class NLImg extends Command {
 
 
   async run(message: KlasaMessage, params: any[]) {
-
-    const args: any[] = params[0].split(' ');
+    
+    const args: any[] = params.length > 0 ? params[0].split(' ') : [];
     const type: string = args.length > 0 ? args[0] : '';
     const user: KlasaUser = args.length > 1 ? args[1] : undefined;
     const selection = this.selection(type);
