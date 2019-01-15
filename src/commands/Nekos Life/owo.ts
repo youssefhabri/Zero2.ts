@@ -7,6 +7,7 @@ export default class NLOwO extends Command {
     // @ts-ignore
     super(...args, {
       enabled: true,
+      hidden: true,
       name: 'nlowo',
       aliases: ['owo'],
       usage: '<nlowo:string>',
