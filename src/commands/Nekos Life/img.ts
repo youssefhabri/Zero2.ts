@@ -44,6 +44,7 @@ export default class NLImg extends Command {
         const messages: any[] = [];
 
         if (user !== undefined) {
+          message.delete();
           messages.push(message.send(`${user}: ${message.author} sent you a ${img_title}!`));
         } else {
           messageEmbed.setTitle(img_title).setURL(img_url);
@@ -52,8 +53,6 @@ export default class NLImg extends Command {
         messages.push(
           message.sendEmbed(messageEmbed),
         );
-
-        message.delete();
 
         return messages;
       })
