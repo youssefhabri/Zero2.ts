@@ -1,5 +1,5 @@
 import { Command, CommandOptions, CommandStore, KlasaClient, KlasaMessage } from 'klasa';
-import { ALRichDisplay } from '../../utils/RichDisplay';
+import { ALRichDisplay } from '../../utils/ALRichDisplay';
 import * as AniList from '../../utils/anilist';
 
 export default class ALMangaCommand extends Command {
@@ -42,7 +42,7 @@ export default class ALMangaCommand extends Command {
         url: manga.coverImage.large,
       },
       footer: {
-        text: 'Status: ' + manga.status + ' | Powered by AniList',
+        text: 'Status: ' + AniList.Status(manga.status, 'MANGA') + ' | Powered by AniList',
       },
       fields: [
         { name: 'Score', value: manga.meanScore || 'N/A', inline: true },

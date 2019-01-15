@@ -1,6 +1,6 @@
 import { Command, CommandOptions, CommandStore, KlasaClient, KlasaMessage } from 'klasa';
 import * as AniList from '../../utils/anilist';
-import { ALRichDisplay } from '../../utils/RichDisplay';
+import { ALRichDisplay } from '../../utils/ALRichDisplay';
 
 export default class ALUserCommand extends Command {
 

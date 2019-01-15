@@ -1,5 +1,7 @@
 import strip_tags from 'striptags';
 import fetch from 'node-fetch';
+import { AiringEpisode } from './types';
+
 
 export const API_URL = 'https://graphql.anilist.co';
 
@@ -15,6 +17,13 @@ export async function query(query: string, variables: any) {
     headers: { 'Content-Type': 'application/json' },
   });
   return (await res.json()).data;
+}
+
+export function FormatTime(time: number): string {
+  const minutes = Math.floor(time % 60);
+  const hours = Math.floor((time / 60) % 24);
+  const days = Math.floor(time / 60 / 24);
+  return `${days} days, ${hours}:${minutes}`;
 }
 
 export function Synopsis(description: string, length: number = 350): string {
@@ -50,11 +59,19 @@ export function TrackingSites(media: any): string {
   return sites;
 }
 
-export function FormatTime(time: number): string {
-  const minutes = Math.floor(time % 60);
-  const hours = Math.floor((time / 60) % 24);
-  const days = Math.floor(time / 60 / 24);
-  return `${days} days, ${hours}:${minutes}`;
+export function NextAiringEpisode(nextAiringEpisode: AiringEpisode): string {
+  if (nextAiringEpisode !== null && nextAiringEpisode.airingAt !== null) {
+    return ', Next episode: ' + FormatTime(nextAiringEpisode.airingAt - (new Date().getTime() / 1000));
+  }
+
+  return '';
+}
+
+export function Status(status: string, type: string = 'ANIME'): string {
+  if (type === 'ANIME' && status === 'RELEASING')
+    return 'Airing';
+
+  return status[0] + status.substr(1).toLowerCase();
 }
 
 export function UserFavourites(user: any, type: string): string {

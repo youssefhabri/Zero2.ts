@@ -1,5 +1,5 @@
 import { Command, CommandOptions, CommandStore, KlasaClient, KlasaMessage } from 'klasa';
-import { ALRichDisplay } from '../../utils/RichDisplay';
+import { ALRichDisplay } from '../../utils/ALRichDisplay';
 import * as AniList from '../../utils/anilist';
 
 export default class ALAnimeCommand extends Command {
@@ -23,8 +23,10 @@ export default class ALAnimeCommand extends Command {
   async run(message: KlasaMessage, params: any[]) {
     const animeList: any[] = await AniList.searchMedia(params[0]);
 
-    if (animeList.length > 0) {
+    if (animeList.length > 1) {
       return ALRichDisplay(this, message, animeList, this.buildEmbed);
+    } else if (animeList.length == 1) {
+      return message.sendEmbed(this.buildEmbed(animeList[0]));
     }
     return message.send(`No results were found for \`${params[0]}\`!`);
   }
@@ -44,9 +46,8 @@ export default class ALAnimeCommand extends Command {
       footer: {
         text:
           'Status: ' +
-          anime.status +
-          ', Next episode: ' +
-          anime.nextAiringEpisode +
+          AniList.Status(anime.status) +
+          AniList.NextAiringEpisode(anime.nextAiringEpisode) +
           ' | Powered by AniList',
       },
       fields: [
