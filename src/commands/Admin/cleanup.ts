@@ -17,7 +17,7 @@ export default class Cleanup extends Command {
 
     message.delete();
 
-    message
+    return message
       .prompt(`Do you really want to delete the last ${limit} message(s)?`)
       .then((message: KlasaMessage) => {
         const response = message.cleanContent;
