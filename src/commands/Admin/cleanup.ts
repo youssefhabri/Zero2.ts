@@ -19,13 +19,13 @@ export default class Cleanup extends Command {
 
     return message
       .prompt(`Do you really want to delete the last ${limit} message(s)?`)
-      .then((message: KlasaMessage) => {
-        const response = message.cleanContent;
+      .then((reply: KlasaMessage) => {
+        const response = reply.cleanContent;
 
-        message.delete();
+        reply.delete();
 
-        if (response === 'yes') {
-          message.channel.messages.fetch({ limit, before: message.id })
+        if (response.localeCompare('yes')) {
+          reply.channel.messages.fetch({ limit, before: message.id })
             .then((collection) =>
               collection.each((message: KlasaMessage) => {
                 return message.delete();
