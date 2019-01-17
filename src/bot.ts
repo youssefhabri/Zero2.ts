@@ -1,13 +1,9 @@
-require('module-alias/register');
-
 // Loading environment variables from .env file
 require('dotenv').config();
 
 import { Client, KlasaClient } from 'klasa';
-
 // Load custom structures for Sneyra Music Commands
-require('./lib/extensions/SneyraGuild');
-
+import './lib/extensions/SneyraGuild';
 // Modify the permission levels
 Client.defaultPermissionLevels
 // @ts-ignore
