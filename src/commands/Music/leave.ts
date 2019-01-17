@@ -1,4 +1,4 @@
-import { MusicCommand } from '../../Sneyra';
+import { MusicCommand } from '../../lib/structures/MusicCommand';
 
 
 export default class extends MusicCommand {

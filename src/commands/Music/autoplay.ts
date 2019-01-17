@@ -1,5 +1,4 @@
-import { MusicCommand } from '../../Sneyra';
-
+import { MusicCommand } from '../../lib/structures/MusicCommand';
 
 module.exports = class extends MusicCommand {
 

@@ -1,6 +1,6 @@
 import { promisify } from 'util';
 import { MessageEmbed } from 'discord.js';
-import { MusicCommand } from '../../Sneyra';
+import { MusicCommand } from '../../lib/structures/MusicCommand';
 import { showSeconds, splitText } from '../../utils/common';
 
 

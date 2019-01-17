@@ -1,4 +1,4 @@
-import { MusicCommand } from '../../Sneyra';
+import { MusicCommand } from '../../lib/structures/MusicCommand';
 import { Permissions } from 'discord.js';
 
 
