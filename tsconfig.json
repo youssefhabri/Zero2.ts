@@ -10,9 +10,20 @@
     "outDir": "dist",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "*": ["node_modules/*", "src/types/*"]
-    }
+      "@/*": [
+        "src/*"
+      ],
+      "*": [
+        "node_modules/*",
+        "src/types/*"
+      ]
+    },
+    "rootDirs": [
+      "src/",
+      "dist/"
+    ]
   },
-  "include": ["src/**/*"]
+  "include": [
+    "src/**/*"
+  ]
 }
