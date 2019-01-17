@@ -15,6 +15,7 @@ export default class extends MusicCommand {
     if (!music.queue.length)
       return msg.sendMessage(`Deck's empty my friend, add some songs to the queue with the \`${msg.guild.settings.prefix}add\` command so I can play them.`);
 
+    // @ts-ignore
     if (!music.voiceChannel) await this.store.get('join').run(msg);
 
     if (music.playing) {
@@ -55,6 +56,7 @@ export default class extends MusicCommand {
         // Autofetch if the autoplayer is enabled
         if (!music.queue.length && music.autoplay) await this.autoPlayer(music);
       } catch (error) {
+        // @ts-ignore
         this.client.emit('error', error);
         music.channel.send(error);
         music.leave();

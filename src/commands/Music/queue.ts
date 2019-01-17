@@ -6,7 +6,10 @@ export default class extends MusicCommand {
 
   constructor(...args) {
     // @ts-ignore
-    super(...args, { description: 'Check the queue list.' });
+    super(...args, {
+      description: 'Check the queue list.',
+      runIn: ['text'],
+    });
   }
 
   async run(msg) {
@@ -21,7 +24,7 @@ export default class extends MusicCommand {
     if (queue.length > 10) output.push(`\nShowing 10 songs of ${queue.length}`);
     else if (autoplay) output.push(`\n**AutoPlay**: <${next}>`);
 
-    return msg.sendMessage(output.join('\n'));
+    return msg.sendMessage(output.length > 0 ? output.join('\n') : 'Music queue is empty.');
   }
 
 }

@@ -1,6 +1,7 @@
 import fetch from 'node-fetch';
 import qs from 'querystring';
-import { MusicCommand } from '../../Sneyra';
+
+import { MusicCommand } from '../../lib/structures/MusicCommand';
 
 const URL = 'https://www.googleapis.com/youtube/v3/search?';
 

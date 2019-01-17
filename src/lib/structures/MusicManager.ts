@@ -1,5 +1,5 @@
 import ytdl from 'ytdl-core';
-import { util as KlasaUtil } from 'klasa';
+import { KlasaClient, KlasaGuild, util as KlasaUtil } from 'klasa';
 import { Channel } from 'discord.js';
 
 
@@ -11,6 +11,8 @@ export class MusicManager {
   private channel: Channel;
   private autoplay: boolean;
   private _next: boolean;
+  private client: KlasaClient;
+  private guild: KlasaGuild;
 
   /**
    * @typedef {Object} MusicManagerSong
@@ -29,7 +31,8 @@ export class MusicManager {
      * @type {Sneyra}
      * @name MusicManager#client
      */
-    Object.defineProperty(this, 'client', { value: guild.client });
+    // Object.defineProperty(this, 'client', { value: guild.client });
+    this.client = guild.client;
 
     /**
      * The SneyraGuild instance that manages this instance
@@ -37,7 +40,8 @@ export class MusicManager {
      * @type {SneyraGuild}
      * @name MusicManager#guild
      */
-    Object.defineProperty(this, 'guild', { value: guild });
+    // Object.defineProperty(this, 'guild', { value: guild });
+    this.guild = guild;
 
     /**
      * The ids of the 10 latest played videos
