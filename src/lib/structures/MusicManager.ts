@@ -317,8 +317,9 @@ export class MusicManager {
     if (connection) {
       connection.disconnect();
     } else {
+      // FIXME changed from `send` to `broadcast`
       // @ts-ignore
-      this.client.ws.send({
+      this.client.ws.broadcast({
         op: 4,
         // @ts-ignore
         shard: this.client.shard ? this.client.shard.id : 0,
