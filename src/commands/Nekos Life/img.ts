@@ -3,12 +3,15 @@ import { Command, KlasaClient, KlasaMessage, KlasaUser } from 'klasa';
 import { random } from '../../utils/common';
 import { MessageEmbed } from 'discord.js';
 
-const selectionList = [
+const typeList = [
   'tickle', 'slap', 'poke', 'pat',
   'neko', 'meow', 'lizard', 'kiss',
   'hug', 'kemonomimi', 'feed', 'cuddle',
-  'holo', 'smug', 'baka', 'woof', 'ngif',
-  'fox_girl',
+  'holo', 'smug', 'baka', 'woof', 'fox_girl',
+];
+
+const nsfwList = [
+  'ngif',
 ];
 
 export default class NLImg extends Command {
@@ -21,7 +24,7 @@ export default class NLImg extends Command {
       usage: '[input:string]',
       useDelim: ' ',
       description: 'Get gifs from nekos.life.',
-      extendedHelp: 'Usage: ' + client.options.prefix + 'nl ' + '[' + selectionList.join('|') + ']',
+      extendedHelp: 'Usage: ' + client.options.prefix + 'nl ' + '[' + typeList.join('|') + ']',
     });
   }
 
@@ -31,7 +34,8 @@ export default class NLImg extends Command {
     const args: any[] = params.length > 0 ? params[0].split(' ') : [];
     const type: string = args.length > 0 ? args[0] : '';
     const user: KlasaUser = args.length > 1 ? args[1] : undefined;
-    const selection = this.selection(type);
+    // @ts-ignore
+    const selection = this.selection(type, message.channel.nsfw || false);
 
     return fetch(`https://nekos.life/api/v2/img/${selection}`)
       .then(async res => {
@@ -62,11 +66,13 @@ export default class NLImg extends Command {
       });
   }
 
-  selection = (input: string): string => {
-    if (input && selectionList.includes(input)) {
+  selection = (input: string, nsfw: boolean = false): string => {
+    if (nsfw) typeList.push(...nsfwList);
+
+    if (input && typeList.includes(input)) {
       return input;
     }
-    return selectionList[random(0, selectionList.length - 1)];
+    return typeList[random(0, typeList.length - 1)];
   };
 
 }
