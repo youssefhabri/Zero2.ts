@@ -8,6 +8,7 @@ export default class extends MusicCommand {
   constructor(...args) {
     // @ts-ignore
     super(...args, {
+      disabled: true,
       description: 'Prune the queue list.',
       requireMusic: true,
     });

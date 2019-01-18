@@ -27,12 +27,12 @@
     "discord.js": "discordjs/discord.js",
     "dotenv": "^6.1.0",
     "firebase-admin": "^6.2.0",
+    "fs-nextra": "^0.3.8",
     "grpc": "^1.16.1",
     "klasa": "dirigeants/klasa#master",
     "node-fetch": "^2.2.1",
-    "striptags": "^3.1.1",
-    "fs-nextra": "^0.3.8",
     "node-opus": "^0.3.1",
+    "striptags": "^3.1.1",
     "ytdl-core": "^0.28.3"
   },
   "devDependencies": {

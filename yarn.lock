@@ -1769,7 +1769,7 @@ kind-of@^6.0.0, kind-of@^6.0.2:
 
 klasa@dirigeants/klasa#master:
   version "0.5.0-dev"
-  resolved "https://codeload.github.com/dirigeants/klasa/tar.gz/abedb51689ae22afce46eb68a94cf60cdc6f627d"
+  resolved "https://codeload.github.com/dirigeants/klasa/tar.gz/6c443e32ac366beded6c2392d3bb24d56c046f3b"
   dependencies:
     fs-nextra "^0.3.2"
 
@@ -2012,11 +2012,6 @@ modelo@^4.2.0:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/modelo/-/modelo-4.2.3.tgz#b278588a4db87fc1e5107ae3a277c0876f38d894"
   integrity sha512-9DITV2YEMcw7XojdfvGl3gDD8J9QjZTJ7ZOUuSAkP+F3T6rDbzMJuPktxptsdHYEvZcmXrCD3LMOhdSAEq6zKA==
-
-module-alias@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/module-alias/-/module-alias-2.1.0.tgz#c36d4fd15f7f9d7112f62fa015385e7b65a286c1"
-  integrity sha1-w21P0V9/nXES9i+gFThee2WihsE=
 
 ms@2.0.0:
   version "2.0.0"

@@ -8,7 +8,7 @@ export default class extends MusicCommand {
 
   constructor(...args) {
     // @ts-ignore
-    super(...args, { description: 'Let\'s start the queue!' });
+    super(...args, { disabled: true, description: 'Let\'s start the queue!' });
   }
 
   async run(msg) {

@@ -12,6 +12,7 @@ export default class extends MusicCommand {
   constructor(...args) {
     // @ts-ignore
     super(...args, {
+      disabled: true,
       description: 'Adds a song the the queue.',
       usage: '<url:string>',
     });

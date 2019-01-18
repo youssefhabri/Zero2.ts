@@ -7,6 +7,7 @@ export default class extends MusicCommand {
   constructor(...args) {
     // @ts-ignore
     super(...args, {
+      disabled: true,
       permissionLevel: 6,
       description: 'Clears the music handler.',
     });

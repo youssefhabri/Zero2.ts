@@ -7,6 +7,7 @@ module.exports = class extends MusicCommand {
   constructor(...args) {
     // @ts-ignore
     super(...args, {
+      disabled: true,
       usage: '[force]',
       description: 'Skip the current song.',
       requireMusic: true,
