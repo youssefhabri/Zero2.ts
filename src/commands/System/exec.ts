@@ -7,7 +7,7 @@ module.exports = class extends Command {
   constructor(...args) {
     // @ts-ignore
     super(...args, {
-      disabled: true,
+      enabled: false,
       aliases: ['execute'],
       description: 'Execute commands in the terminal, use with EXTREME CAUTION.',
       guarded: true,

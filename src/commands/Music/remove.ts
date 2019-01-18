@@ -7,7 +7,7 @@ module.exports = class extends MusicCommand {
   constructor(...args) {
     // @ts-ignore
     super(...args, {
-      disabled: true,
+      enabled: false,
       usage: '<number:integer>',
       description: 'Remove a song from the queue list.',
       requireMusic: true,

@@ -9,7 +9,7 @@ export default class extends MusicCommand {
   constructor(...args) {
     // @ts-ignore
     super(...args, {
-      disabled: true,
+      enabled: false,
       description: 'Check the queue list.',
       runIn: ['text'],
     });

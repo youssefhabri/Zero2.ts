@@ -7,7 +7,7 @@ module.exports = class extends MusicCommand {
   constructor(...args) {
     // @ts-ignore
     super(...args, {
-      disabled: true,
+      enabled: false,
       description: 'Toggle the autoplayer.',
       extendedHelp: [
         'NOTE! This command does not make Sneyra play a song from the nowhere, it tells her whether to play the first',

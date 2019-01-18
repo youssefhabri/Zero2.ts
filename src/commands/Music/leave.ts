@@ -8,7 +8,7 @@ export default class extends MusicCommand {
   constructor(...args) {
     // @ts-ignore
     super(...args, {
-      disabled: true,
+      enabled: false,
       description: 'Leaves the voice channel.',
       requireMusic: true,
     });

@@ -12,7 +12,7 @@ export default class extends MusicCommand {
 
   constructor(...args) {
     // @ts-ignore
-    super(...args, { disabled: true, description: 'Get information from the current song.' });
+    super(...args, { enabled: false, description: 'Get information from the current song.' });
   }
 
   async run(msg) {
