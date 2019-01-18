@@ -1,3 +1,5 @@
+// Copyright (c) 2017-2018 kyranet. All rights reserved. MIT license.
+
 import { Command } from 'klasa';
 
 
@@ -7,7 +9,7 @@ export default class extends Command {
     // @ts-ignore
     super(...args, {
       aliases: ['talk'],
-      description: 'Make Sneyra talk in another channel.',
+      description: 'Make the bot talk in another channel.',
       permissionLevel: 10,
       usage: '[channel:channel] [message:string] [...]',
       usageDelim: ' ',

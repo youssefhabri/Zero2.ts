@@ -36,6 +36,7 @@ export function file_ext(filename): string {
   return ext.toLowerCase();
 }
 
+// Copyright (c) 2017-2018 kyranet. All rights reserved. MIT license.
 
 /**
  * Split a string by its latest space character in a range from the character 0 to the selected one.

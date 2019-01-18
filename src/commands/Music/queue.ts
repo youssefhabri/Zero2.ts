@@ -1,3 +1,5 @@
+// Copyright (c) 2017-2018 kyranet. All rights reserved. MIT license.
+
 import { MusicCommand } from '../../lib/structures/MusicCommand';
 import { showSeconds } from '../../utils/common';
 
@@ -17,7 +19,7 @@ export default class extends MusicCommand {
     const output = [];
     for (let i = 0; i < Math.min(queue.length, 10); i++) {
       output[i] = [
-        `[__\`${String(i + 1).padStart(2, '')}\`__] *${queue[i].title.replace(/\*/g, '\\*')}* requested by **${queue[i].requester.tag || queue[i].requester}**`,
+        `[__\`${String(i + 1).padStart(2, '')}\`__]${i === 0 ? ' **Current**' : ''} *${queue[i].title.replace(/\*/g, '\\*')}* requested by **${queue[i].requester.tag || queue[i].requester}**`,
         `   └── <https://youtu.be/${queue[i].url}> (${showSeconds(queue[i].seconds * 1000)})`,
       ].join('\n');
     }

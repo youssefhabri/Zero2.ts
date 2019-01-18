@@ -1,3 +1,5 @@
+// Copyright (c) 2017-2018 kyranet. All rights reserved. MIT license.
+
 import ytdl from 'ytdl-core';
 import { KlasaClient, KlasaGuild, util as KlasaUtil } from 'klasa';
 import { Channel } from 'discord.js';

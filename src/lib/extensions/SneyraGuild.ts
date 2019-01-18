@@ -1,3 +1,5 @@
+// Copyright (c) 2017-2018 kyranet. All rights reserved. MIT license.
+
 import { Structures } from 'discord.js';
 
 import { MusicManager } from '../structures/MusicManager';
