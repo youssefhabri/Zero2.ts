@@ -23,7 +23,13 @@ export function FormatTime(time: number): string {
   const minutes = Math.floor(time % 60);
   const hours = Math.floor((time / 60) % 24);
   const days = Math.floor(time / 60 / 24);
-  return `${days} days, ${hours}:${minutes}`;
+
+  if (days > 0) {
+    return `${days} days, ${hours}:${minutes}`;
+  } else if (hours > 0) {
+    return `${hours} hours, ${minutes} minutes`;
+  }
+  return `${minutes} minutes`;
 }
 
 export function Synopsis(description: string, length: number = 350): string {
@@ -61,7 +67,8 @@ export function TrackingSites(media: any): string {
 
 export function NextAiringEpisode(nextAiringEpisode: AiringEpisode): string {
   if (nextAiringEpisode !== null && nextAiringEpisode.airingAt !== null) {
-    return ', Next episode: ' + FormatTime(nextAiringEpisode.airingAt - (new Date().getTime() / 1000));
+    const time = nextAiringEpisode.airingAt - (new Date().getTime() / 1000);
+    return ', Next episode: ' + FormatTime(time / 60);
   }
 
   return '';
