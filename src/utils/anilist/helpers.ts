@@ -75,12 +75,20 @@ export function NextAiringEpisode(nextAiringEpisode: AiringEpisode): string {
 }
 
 export function Status(status: string, type: string = 'ANIME'): string {
-  status = status.replace('_', ' ');
-
   if (type === 'ANIME' && status === 'RELEASING')
     return 'Airing';
+  switch (status) {
+    case 'FINISHED':
+      return 'Finished';
+    case 'RELEASING':
+      return type === 'ANIME' ? 'Airing' : 'Releasing';
+    case 'NOT_YET_RELEASED':
+      return 'Not Yet Released';
+    case 'CANCELLED':
+      return 'Cancelled';
+  }
 
-  return status[0] + status.substr(1).toLowerCase();
+  return 'N/A';
 }
 
 export function UserFavourites(user: any, type: string): string {
