@@ -75,6 +75,8 @@ export function NextAiringEpisode(nextAiringEpisode: AiringEpisode): string {
 }
 
 export function Status(status: string, type: string = 'ANIME'): string {
+  status = status.replace('_', ' ');
+
   if (type === 'ANIME' && status === 'RELEASING')
     return 'Airing';
 
