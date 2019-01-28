@@ -831,7 +831,7 @@ detect-libc@^1.0.2:
 
 discord.js@discordjs/discord.js:
   version "12.0.0-dev"
-  resolved "https://codeload.github.com/discordjs/discord.js/tar.gz/3418b5a1a2e2e424369da42f0a04dc3523f3d933"
+  resolved "https://codeload.github.com/discordjs/discord.js/tar.gz/3dff5058f0beae01cec0abe27e3a43c8fd7c60ce"
   dependencies:
     form-data "^2.3.2"
     node-fetch "^2.1.2"
@@ -1769,7 +1769,7 @@ kind-of@^6.0.0, kind-of@^6.0.2:
 
 klasa@dirigeants/klasa#master:
   version "0.5.0-dev"
-  resolved "https://codeload.github.com/dirigeants/klasa/tar.gz/6c443e32ac366beded6c2392d3bb24d56c046f3b"
+  resolved "https://codeload.github.com/dirigeants/klasa/tar.gz/1855a42ccc3fbc95bf21fffa8a9b2430375f6b97"
   dependencies:
     fs-nextra "^0.3.2"
 
