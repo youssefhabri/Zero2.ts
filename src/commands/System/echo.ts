@@ -1,6 +1,7 @@
 // Copyright (c) 2017-2018 kyranet. All rights reserved. MIT license.
 
 import { Command } from 'klasa';
+import { MessageEmbed } from 'discord.js';
 
 
 export default class extends Command {
@@ -11,12 +12,12 @@ export default class extends Command {
       aliases: ['talk'],
       description: 'Make the bot talk in another channel.',
       permissionLevel: 10,
-      usage: '[channel:channel] [message:string] [...]',
-      usageDelim: ' ',
+      usage: '[channel:channel] [title:string] [message:string] [...]',
+      usageDelim: ' | ',
     });
   }
 
-  async run(msg, [channel = msg.channel, ...content]) {
+  async run(msg, [channel = msg.channel, title, ...content]) {
     if (msg.deletable) msg.delete().catch(() => undefined);
 
     const attachment = msg.attachments.size > 0 ? msg.attachments.first().url : undefined;
@@ -29,7 +30,11 @@ export default class extends Command {
     };
     if (attachment) options.files = [{ attachment }];
 
-    return channel.send(replyContent, options);
+    const msgEmbed = new MessageEmbed();
+    msgEmbed.setTitle(title);
+    msgEmbed.setDescription(replyContent);
+
+    return channel.sendEmbed(msgEmbed);
   }
 
 };
